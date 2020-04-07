@@ -1,0 +1,17 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+header#nav {
+  -webkit-font-smoothing: antialiased;
+    background-image: -webkit-gradient(linear,right bottom,left top,from(#0084e7),to(#00407f));
+    background-image: linear-gradient(to top left,#0084e7,#00407f);
+    -webkit-box-shadow: inset 0 -0.5rem 7.5rem -3rem #00407f;
+    box-shadow: inset 0 -0.5rem 7.5rem -3rem #00407f;
+    min-height: 4rem;
+}
+header#nav #logo img{ 
+  height: 2.5rem;
+  width: 5.5rem; 
+  margin: 10px;
+}

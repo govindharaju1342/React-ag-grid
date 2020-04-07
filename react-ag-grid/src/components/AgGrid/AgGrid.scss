@@ -1,0 +1,469 @@
+@import 'styles/colors';
+
+.dropdown.ag-grid-select-box.open .dropdown-menu {
+  display: contents;
+  position: relative;
+}
+
+.ag-react-container
+  .ag-grid-date-parent
+  .dropdown.ag-grid-select-box
+  div.dropdown-menu
+  div.dropdown-wrapper {
+  position: absolute;
+}
+
+.ag-react-container
+  .ag-grid-date-parent
+  .dropdown.ag-grid-select-box.open
+  div.dropdown-menu
+  div.dropdown-wrapper {
+  visibility: visible;
+  position: fixed;
+  background-color: $dell-white;
+  border: 1px solid $dell-medium-gray;
+}
+
+.ag-theme-material .ag-cell {
+  padding: 0 15px;
+}
+
+.ag-header-row,
+.ag-theme-material {
+  .ag-row {
+    background-color: $dell-white;
+    border-left: 1px solid $dell-light-gray-11 !important;
+  }
+
+  .ag-row.ag-row-selected {
+    background-color: rgba(204, 229, 241, 0.35);
+  }
+}
+
+.ag-theme-material {
+  background-color: $dell-light-gray;
+
+  .ag-ltr {
+    .ag-cell {
+      padding: 0 15px;
+      text-overflow: initial;
+      white-space: normal;
+      overflow: inherit;
+      line-height: 15px !important;
+      display: flex;
+      align-items: center;
+      word-break: break-all;
+
+      .select-box {
+        border-color: $dell-medium-gray;
+      }
+    }
+  }
+
+  .ag-header-cell {
+    border-width: 1px;
+    padding: 0 15px;
+  }
+
+  .ag-header-group-cell {
+    border-width: 1px;
+  }
+
+  .ag-header-row {
+    &:first-child {
+      .ag-header-cell {
+        border-top-width: 1px;
+        border-color: $dell-light-gray2;
+      }
+
+      .ag-header-group-cell {
+        border-top-width: 1px;
+        border-color: $dell-light-gray2;
+      }
+    }
+  }
+
+  .ag-header {
+    border: none;
+    background-color: #f4f4f4;
+  }
+}
+
+.main-container {
+  .layout-section-margin {
+    .ag-theme-material {
+      background-color: $dell-light-gray;
+
+      .ag-ltr {
+        .ag-cell {
+          .select-box {
+            border-color: $dell-medium-gray;
+
+            &:focus {
+              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                0 0 6px $dell-medium-gray;
+            }
+          }
+
+          input.inputGridColumn[type='text']:not([readonly]) {
+            border: 1px solid $dell-medium-gray;
+            border-radius: 6px;
+            background-color: $dell-white;
+            padding: 0.6rem;
+
+            &:focus {
+              background: $dell-white;
+            }
+          }
+        }
+      }
+
+      .ag-icon-checkbox-checked {
+        color: $dell-blue;
+      }
+    }
+  }
+
+  .body-section {
+    .body-content-section {
+      .ag-theme-material {
+        background-color: $dell-light-gray;
+
+        .ag-ltr {
+          .ag-cell {
+            .select-box {
+              border-color: $dell-medium-gray;
+
+              &:focus {
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                  0 0 6px $dell-medium-gray;
+              }
+            }
+
+            input.inputGridColumn[type='text']:not([readonly]) {
+              border: 1px solid $dell-medium-gray;
+              border-radius: 6px;
+              background-color: $dell-white;
+              padding: 0.6rem;
+
+              &:focus {
+                background: $dell-white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ag-header-viewport {
+  // border-right: 1px solid $dell-light-gray-11;
+  .ag-header-container {
+    background-color: $dell-white;
+  }
+}
+
+.ag-center-cols-container {
+  border-right: 2px solid $dell-light-gray-11;
+}
+
+.ag-theme-material .ag-header-cell:first-of-type:hover {
+  background: none;
+}
+
+.ag-theme-material
+  .ag-header-cell:not(.ag-column-resizing)
+  + .ag-header-cell:hover {
+  background: none;
+}
+
+.ag-icon-filter,
+.ag-header-cell-menu-button {
+  display: none;
+}
+
+.ag-theme-material .ag-floating-filter-input,
+.ag-theme-material .form-control {
+  height: 32px !important;
+  width: 100%;
+  padding: 6px 12px;
+  background-color: $dell-white;
+  background-image: none;
+  border: 1px solid $dell-medium-gray !important;
+  border-color: $dell-blue;
+  border-radius: 4px !important;
+  font-weight: normal;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out !important;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+.ag-floating-filter-input:focus,
+.form-control:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $dell-blue !important;
+}
+
+.ag-grid-title {
+  font-size: 22px;
+  color: $dell-dark-gray4;
+  padding-left: 15px;
+  margin-left: 15px;
+  padding-top: 10px;
+  border-left: 1px solid $border-color-gray;
+  border-right: 1px solid $border-color-gray;
+  border-top: 1px solid $border-color-gray;
+  padding-bottom: 10px;
+  margin-right: 15px;
+}
+
+.ag-icon-export-dropdown,
+.ag-icon-column-dropdown {
+  position: absolute;
+  z-index: 1;
+  background: $dell-white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  padding: 25px 20px;
+  right: 0;
+  margin-top: 30px;
+  display: none;
+}
+
+.show-lists .ag-icon-export-dropdown {
+  display: block;
+}
+
+.show-lists .ag-icon-column-dropdown {
+  display: block;
+}
+
+.ag-menu-icons .show-lists {
+  border: none;
+}
+
+.ag-icon-export-dropdown button {
+  opacity: 1;
+  margin: 5px;
+}
+
+.ag-icon-column-dropdown .dropdown-item {
+  padding: 5px 15px;
+  text-align: left;
+}
+
+.ag-icon-column-dropdown .dropdown-item .ag-column-check {
+  margin: 5px 10px;
+}
+
+.btn {
+  letter-spacing: 0;
+}
+
+.ag-theme-material
+  .ag-ltr
+  .ag-has-focus
+  .ag-cell-focus:not(.ag-cell-range-selected),
+.ag-theme-material
+  .ag-ltr
+  .ag-has-focus
+  .ag-cell-focus.ag-cell-range-single-cell,
+.ag-theme-material
+  .ag-ltr
+  .ag-cell-focus.ag-cell-range-single-cell.ag-cell-range-handle,
+.ag-theme-material
+  .ag-rtl
+  .ag-has-focus
+  .ag-cell-focus:not(.ag-cell-range-selected),
+.ag-theme-material
+  .ag-rtl
+  .ag-has-focus
+  .ag-cell-focus.ag-cell-range-single-cell,
+.ag-theme-material
+  .ag-rtl
+  .ag-cell-focus.ag-cell-range-single-cell.ag-cell-range-handle {
+  border: none;
+}
+
+.ag-theme-material .ag-row-hover {
+  background-color: rgb(231, 242, 251);
+}
+
+.ag-body-horizontal-scroll-viewport {
+  overflow-x: auto;
+}
+
+.ag-header-cell-text {
+  color: #555555;
+  font-weight: 700;
+  text-overflow: initial;
+}
+
+.ag-grid-date-parent {
+  position: static;
+  z-index: 2;
+  width: 50px !important;
+  // margin-top: -45px;
+}
+
+.ag-grid-data-filter {
+  width: 100%;
+  padding-left: 5px;
+}
+
+.icon-two {
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: 17px;
+  background-position: center;
+}
+
+.icon-one {
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: 17px;
+  background-position: center;
+}
+
+.page-nav {
+  background-color: $dell-light-gray;
+
+  .page-nav-div {
+    display: flex;
+  }
+
+  button {
+    border: none;
+    background: none;
+    color: rgba(0, 0, 0, 0.5);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.ag-grid-select-box {
+  height: 32px;
+  width: 50px;
+  border: 1px solid $dell-medium-gray;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $dell-blue;
+  }
+
+  .btn.btn-link {
+    color: $dell-black;
+  }
+
+  .dropdown-menu {
+    margin: 2px 0;
+    width: 100px;
+  }
+
+  .dropdown-toggle {
+    padding: 0 12px;
+    line-height: 6px;
+    height: 32px;
+    min-height: 32px;
+    font-weight: normal;
+    width: 75%;
+  }
+
+  svg {
+    /* margin-left: -40%;
+    margin-bottom: -2px; */
+    right: 3px;
+    position: absolute;
+    top: 10px;
+  }
+}
+
+.ag-dropdown .dropdown-item.grid-dropdown-option {
+  padding-left: 0;
+
+  .grid-column-overflow {
+    height: 200px;
+    overflow: auto;
+  }
+}
+
+.ag-center-cols-viewport,
+.ag-body-horizontal-scroll-viewport {
+  overflow: hidden;
+}
+
+.ag-menu-icons {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 40px;
+  position: relative;
+
+  .row-details {
+    order: 1;
+    margin: 2px 5px;
+  }
+
+  .row-details-border {
+    border-right: 1px solid $border-color-gray;
+    margin: 2px 10px;
+    height: 20px;
+  }
+
+  .ag-menu-icons svg .ag-dropdown {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  svg {
+    height: auto;
+    width: 16px;
+    margin: 5px;
+    fill: $dell-other-blue;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  span {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.ag-cell span svg {
+  width: 20px;
+  height: 20px;
+}
+
+.columnDisabled {
+  opacity: 0.6;
+}
+
+.ag-theme-material .ag-overlay-loading-wrapper {
+  background-color: transparent;
+}
+
+.ag-overlay-panel {
+  .ag-overlay-wrapper {
+    .spinner {
+      min-height: 3rem;
+      min-width: 3rem;
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+}
