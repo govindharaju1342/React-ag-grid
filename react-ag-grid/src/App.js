@@ -1,17 +1,17 @@
 import React from "react";
 import "./App.css";
-import Aggird from "./containers/Aggird/aggird";
+import AgGirdTable from "./containers/AgGridTable";
 
 function App() {
   return (
     <div className="App">
-      <header id="nav" class="compact">
+      <header id="nav" className="compact">
         <a id="logo" href="/" title="The Best Javascript Grid in the World">
-          <img src="/logo.svg" />
+          <img src="/logo.svg" alt="img" />
         </a>
       </header>
       <div>
-        <Aggird />
+        <AgGirdTable />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@import "../../styles/colors.scss";
 
 .dropdown.ag-grid-select-box.open .dropdown-menu {
   display: contents;
@@ -20,8 +20,8 @@
   div.dropdown-wrapper {
   visibility: visible;
   position: fixed;
-  background-color: $dell-white;
-  border: 1px solid $dell-medium-gray;
+  background-color: $white;
+  border: 1px solid $medium-gray;
 }
 
 .ag-theme-material .ag-cell {
@@ -31,8 +31,8 @@
 .ag-header-row,
 .ag-theme-material {
   .ag-row {
-    background-color: $dell-white;
-    border-left: 1px solid $dell-light-gray-11 !important;
+    background-color: $white;
+    border-left: 1px solid $light-gray-11 !important;
   }
 
   .ag-row.ag-row-selected {
@@ -41,7 +41,7 @@
 }
 
 .ag-theme-material {
-  background-color: $dell-light-gray;
+  background-color: $light-gray;
 
   .ag-ltr {
     .ag-cell {
@@ -55,7 +55,7 @@
       word-break: break-all;
 
       .select-box {
-        border-color: $dell-medium-gray;
+        border-color: $medium-gray;
       }
     }
   }
@@ -73,12 +73,12 @@
     &:first-child {
       .ag-header-cell {
         border-top-width: 1px;
-        border-color: $dell-light-gray2;
+        border-color: $light-gray2;
       }
 
       .ag-header-group-cell {
         border-top-width: 1px;
-        border-color: $dell-light-gray2;
+        border-color: $light-gray2;
       }
     }
   }
@@ -92,34 +92,34 @@
 .main-container {
   .layout-section-margin {
     .ag-theme-material {
-      background-color: $dell-light-gray;
+      background-color: $light-gray;
 
       .ag-ltr {
         .ag-cell {
           .select-box {
-            border-color: $dell-medium-gray;
+            border-color: $medium-gray;
 
             &:focus {
               box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                0 0 6px $dell-medium-gray;
+                0 0 6px $medium-gray;
             }
           }
 
-          input.inputGridColumn[type='text']:not([readonly]) {
-            border: 1px solid $dell-medium-gray;
+          input.inputGridColumn[type="text"]:not([readonly]) {
+            border: 1px solid $medium-gray;
             border-radius: 6px;
-            background-color: $dell-white;
+            background-color: $white;
             padding: 0.6rem;
 
             &:focus {
-              background: $dell-white;
+              background: $white;
             }
           }
         }
       }
 
       .ag-icon-checkbox-checked {
-        color: $dell-blue;
+        color: $blue;
       }
     }
   }
@@ -127,27 +127,27 @@
   .body-section {
     .body-content-section {
       .ag-theme-material {
-        background-color: $dell-light-gray;
+        background-color: $light-gray;
 
         .ag-ltr {
           .ag-cell {
             .select-box {
-              border-color: $dell-medium-gray;
+              border-color: $medium-gray;
 
               &:focus {
                 box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                  0 0 6px $dell-medium-gray;
+                  0 0 6px $medium-gray;
               }
             }
 
-            input.inputGridColumn[type='text']:not([readonly]) {
-              border: 1px solid $dell-medium-gray;
+            input.inputGridColumn[type="text"]:not([readonly]) {
+              border: 1px solid $medium-gray;
               border-radius: 6px;
-              background-color: $dell-white;
+              background-color: $white;
               padding: 0.6rem;
 
               &:focus {
-                background: $dell-white;
+                background: $white;
               }
             }
           }
@@ -158,14 +158,14 @@
 }
 
 .ag-header-viewport {
-  // border-right: 1px solid $dell-light-gray-11;
+  // border-right: 1px solid $light-gray-11;
   .ag-header-container {
-    background-color: $dell-white;
+    background-color: $white;
   }
 }
 
 .ag-center-cols-container {
-  border-right: 2px solid $dell-light-gray-11;
+  border-right: 2px solid $light-gray-11;
 }
 
 .ag-theme-material .ag-header-cell:first-of-type:hover {
@@ -188,10 +188,10 @@
   height: 32px !important;
   width: 100%;
   padding: 6px 12px;
-  background-color: $dell-white;
+  background-color: $white;
   background-image: none;
-  border: 1px solid $dell-medium-gray !important;
-  border-color: $dell-blue;
+  border: 1px solid $medium-gray !important;
+  border-color: $blue;
   border-radius: 4px !important;
   font-weight: normal;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) !important;
@@ -203,12 +203,12 @@
 
 .ag-floating-filter-input:focus,
 .form-control:focus {
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $dell-blue !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $blue !important;
 }
 
 .ag-grid-title {
   font-size: 22px;
-  color: $dell-dark-gray4;
+  color: $dark-gray4;
   padding-left: 15px;
   margin-left: 15px;
   padding-top: 10px;
@@ -223,7 +223,7 @@
 .ag-icon-column-dropdown {
   position: absolute;
   z-index: 1;
-  background: $dell-white;
+  background: $white;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   padding: 25px 20px;
   right: 0;
@@ -314,22 +314,18 @@
 
 .icon-two {
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
   background-size: 17px;
   background-position: center;
 }
 
 .icon-one {
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
   background-size: 17px;
   background-position: center;
 }
 
 .page-nav {
-  background-color: $dell-light-gray;
+  background-color: $light-gray;
 
   .page-nav-div {
     display: flex;
@@ -349,7 +345,7 @@
 .ag-grid-select-box {
   height: 32px;
   width: 50px;
-  border: 1px solid $dell-medium-gray;
+  border: 1px solid $medium-gray;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color 0.15s ease-in-out,
@@ -358,11 +354,11 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:active {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $dell-blue;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px $blue;
   }
 
   .btn.btn-link {
-    color: $dell-black;
+    color: $black;
   }
 
   .dropdown-menu {
@@ -429,7 +425,7 @@
     height: auto;
     width: 16px;
     margin: 5px;
-    fill: $dell-other-blue;
+    fill: $other-blue;
     cursor: pointer;
 
     &:focus {
@@ -464,6 +460,18 @@
       min-width: 3rem;
       height: 3rem;
       width: 3rem;
+    }
+  }
+}
+.gird-menu {
+  display: flex;
+  width: 98%;
+  flex-direction: row-reverse;
+  div {
+    img {
+      width: 20px;
+      margin: 15px 5px 5px 5px;
+      cursor: pointer;
     }
   }
 }

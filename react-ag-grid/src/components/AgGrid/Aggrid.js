@@ -3,79 +3,27 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 import { PropTypes } from "prop-types";
-import GridHandler from "./GridHandler";
+import GridMenu from "./components/GridMenu";
+import "./AgGrid.scss";
 
+const gridApi = {};
 function AgGrid(props) {
-  const rowRecord = props.t("No Result Found");
   const agColumnCheck = [];
-  const { uniqueKey } = props;
-  const { columnDefs, filterIcon, parentStyle } = props.data;
-
-  const getFilterRow = () => {
-    return filterRowCount;
-  };
-
-  const updateRowCount = (params) => {
-    const filterRow = getFilterRow();
-    if (!!filterRow && filterRow[uniqueKey]) {
-      filterRow[uniqueKey].innerText =
-        !!gridApi[uniqueKey] &&
-        !!gridApi[uniqueKey].gridOptionsWrapper.gridOptions.floatingFilter
-          ? `Showing ${params.api.rowModel.rowsToDisplay.length} of ${params.api.rowModel.rootNode.allLeafChildren.length} Records`
-          : `${params.api.rowModel.rootNode.allLeafChildren.length} Records`;
-    }
-  };
-
-  const resetColumn = async () => {
-    if (!!gride[uniqueKey]) {
-      const columnApi = gride[uniqueKey].columnApi.getColumnState();
-      const updatedApi = columnApi.map((val, index) => {
-        const column = val;
-        column.hide = !!columnDefs[index].hide;
-        agColumnCheck[index].checked = !columnDefs[index].hide;
-        return column;
-      });
-      await gride[uniqueKey].columnApi.setColumnState(updatedApi);
-      const allColumnIds = [];
-      gride[uniqueKey].columnApi.getAllColumns().forEach((column) => {
-        allColumnIds.push(column.colId);
-      });
-      gride[uniqueKey].columnApi.autoSizeColumns(allColumnIds);
-      gridApi[uniqueKey].sizeColumnsToFit();
-    }
-  };
-
-  const onGridReady = (params) => {
-    gride[uniqueKey] = params;
-    gridApi[uniqueKey] = params.api;
-    if (!!gridApi[uniqueKey]) {
-      gridApi[uniqueKey].sizeColumnsToFit();
-      gridApi[uniqueKey].resetRowHeights();
-      updateRowCount(gride[uniqueKey]);
-      if (!!props.gridObj) {
-        props.gridObj(gride[uniqueKey]);
-      }
-    }
-  };
-
-  const onRowChange = (params) => {
-    updateRowCount(params);
-  };
-
-  const toggleColumn = (e) => {
-    e.stopPropagation();
-    const columnApi = gride[uniqueKey].columnApi.getColumnState();
-    columnApi[
-      columnApi.findIndex((val) => val.colId === e.target.value)
-    ].hide = !e.target.checked;
-    gride[uniqueKey].columnApi.setColumnState(columnApi);
-    gridApi[uniqueKey].sizeColumnsToFit();
-  };
-
+  const {
+    gridOptions,
+    filterIcon,
+    parentStyle,
+    rowSelection,
+    uniqueKey = "grid",
+  } = props.gridData;
+  const { columnDefs } = gridOptions;
   const thisObject = () => {
-    return gride[uniqueKey];
+    return gridApi[uniqueKey];
   };
-
+  const onGridReady = (params) => {
+    gridApi[uniqueKey] = params;
+    gridApi[uniqueKey].api.sizeColumnsToFit();
+  };
   const getColumnList = () => {
     const columnList = columnDefs.map((column, index) => {
       return (
@@ -105,33 +53,43 @@ function AgGrid(props) {
             htmlFor={column.field}
             disabled={!!column.disabled}
           >
-            {column.name}
+            {column.headerName}
           </label>
         </div>
       );
     });
     return columnList;
   };
-
-  const getDisplayRows = () => {
-    return (
-      <span
-        ref={(val) => {
-          filterRowCount[uniqueKey] = val;
-        }}
-      >
-        0 Records
-      </span>
-    );
+  const toggleColumn = (e) => {
+    const columnApi = gridApi[uniqueKey].columnApi.getColumnState();
+    columnApi[
+      columnApi.findIndex((val) => val.colId === e.target.value)
+    ].hide = !e.target.checked;
+    gridApi[uniqueKey].columnApi.setColumnState(columnApi);
+    gridApi[uniqueKey].api.sizeColumnsToFit();
   };
 
+  const resetColumn = async () => {
+    if (!!gridApi[uniqueKey]) {
+      const allColumnIds = [];
+      const columnApi = gridApi[uniqueKey].columnApi.getColumnState();
+      const updatedApi = columnApi.map((val, index) => {
+        const column = val;
+        column.hide = !!columnDefs[index].hide;
+        agColumnCheck[index].checked = !columnDefs[index].hide;
+        return column;
+      });
+      await gridApi[uniqueKey].columnApi.setColumnState(updatedApi);
+      gridApi[uniqueKey].columnApi.getAllColumns().forEach((column) => {
+        allColumnIds.push(column.colId);
+      });
+      gridApi[uniqueKey].columnApi.autoSizeColumns(allColumnIds);
+      gridApi[uniqueKey].api.sizeColumnsToFit();
+    }
+  };
   return (
     <div>
-      <div
-        className="ag-menu-icons"
-        style={!filterIcon ? {} : filterIcon.style}
-      >
-        <div className="row-details">{getDisplayRows()}</div>
+      <div style={parentStyle} className="ag-theme-material">
         {!!filterIcon ? (
           <GridMenu
             config={filterIcon}
@@ -142,15 +100,11 @@ function AgGrid(props) {
         ) : (
           ""
         )}
-      </div>
-      <div style={parentStyle} className="ag-theme-material">
         <AgGridReact
-          gridOptions={GridHandler(props.data, rowRecord, updateRowCount)}
+          gridOptions={gridOptions}
           onGridReady={onGridReady}
-          onRowDataChanged={onRowChange}
-          rowSelection={
-            !!props.data.rowSelection ? props.data.rowSelection : "single"
-          }
+          pagination={true}
+          rowSelection={!!rowSelection ? rowSelection : "single"}
         />
       </div>
     </div>
@@ -158,15 +112,11 @@ function AgGrid(props) {
 }
 
 AgGrid.defaultProps = {
-  data: {},
-  gridObj: null,
-  uniqueKey: "grid",
+  gridData: {},
 };
 
 AgGrid.propTypes = {
-  data: PropTypes.object,
-  gridObj: PropTypes.func,
-  uniqueKey: PropTypes.string,
+  gridData: PropTypes.object,
 };
 
 export default AgGrid;
