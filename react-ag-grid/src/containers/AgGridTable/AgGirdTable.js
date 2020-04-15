@@ -1,8 +1,29 @@
 import React, { Component } from "react";
 import AgGrid from "../../components/AgGrid";
-import { gridData, defaultColDef } from "../../constants";
+import data from "../../mockdata/data.json";
+import Modal from "../../components/Modal"
+import { defaultColDef } from "../../constants"; 
 
 class AgGirdTable extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: {
+        show: false,
+        content: '' 
+      }
+    }
+  }
+  
+  hideShowModal = (data) => {  
+    this.setState( { 
+        modal: {
+          show: !!data,
+          content: !!data ? JSON.stringify(data) : null
+        }
+    })
+  };
+
   refreshFunction = () => {
     console.log("refresh");
   };
@@ -50,8 +71,9 @@ class AgGirdTable extends Component {
           },
         ],
         paginationPageSize: 10,
-        rowData: gridData,
+        rowData: data       
       },
+      onRowSelect: this.getRowSelect,       
       filterIcon: {
         show: true,
         refresh: this.refreshFunction,
@@ -65,9 +87,19 @@ class AgGirdTable extends Component {
     };
   };
 
-  render() {
+  getRowSelect = event => { 
+    if (event.node.selected) {
+      this.hideShowModal(event.node.data) 
+    }
+    
+  };
+
+  render() {  
+    const { modal} = this.state;
+    console.log(modal)
     return (
       <div>
+        <Modal modalData={modal} closeFunction = { this.hideShowModal} />
         <AgGrid gridData={this.getGridInformation()}></AgGrid>
       </div>
     );

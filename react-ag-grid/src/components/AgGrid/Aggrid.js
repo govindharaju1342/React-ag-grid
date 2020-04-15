@@ -14,12 +14,13 @@ function AgGrid(props) {
     filterIcon,
     parentStyle,
     rowSelection,
+    onRowSelect,
     uniqueKey = "grid",
   } = props.gridData;
   const { columnDefs } = gridOptions;
   const thisObject = () => {
     return gridApi[uniqueKey];
-  };
+  }; 
   const onGridReady = (params) => {
     gridApi[uniqueKey] = params;
     gridApi[uniqueKey].api.sizeColumnsToFit();
@@ -102,6 +103,7 @@ function AgGrid(props) {
         )}
         <AgGridReact
           gridOptions={gridOptions}
+          onRowSelected = {onRowSelect}
           onGridReady={onGridReady}
           pagination={true}
           rowSelection={!!rowSelection ? rowSelection : "single"}
